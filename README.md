@@ -2,48 +2,47 @@
 
 零依赖的静态站点，包含两个独立页面：
 
-| 目录 | 页面 | 部署路径 | 定位 |
+| 目录 | 页面 | 线上路径 | 定位 |
 |---|---|---|---|
-| `showcase/index.html` | **作品集** | `http://<server>/` | 公开，展示自研产品，持续添加 |
-| `index.html` | **个人主页 / 简历** | `http://<server>/me/` | 偏私密，不从公开页链接 |
+| `showcase/index.html` | **作品集** | `http://124.223.55.175/` | 公开，展示自研产品，持续添加 |
+| `me/index.html` | **个人主页 / 简历** | `http://124.223.55.175/me/` | 偏私密，不从公开页链接 |
 
-> 部署在 myserver（124.223.55.175），由 Caddy 提供：80 端口根路径 = 作品集，`/me` = 个人主页。
-> 新增产品：在 `showcase/index.html` 里复制一个 `.work` 卡片、改内容、把 `href` 换成真实地址即可。
+> 另有 `Sky 工具箱` 项目独立部署在服务器 `/home/code/sky-tool`，线上 `http://124.223.55.175/sky-tool/`，不在本仓库内。
 
----
+## 🚀 部署工作流（GitHub 中转）
 
-一个单文件、零依赖的精美个人主页：个人介绍 + 项目展示 + 简历 + 联系方式。
+本地改 → 推送 GitHub → 服务器拉取即生效。Caddy 直接服务仓库目录，静态文件无需重启。
 
-## ✨ 特性
+```bash
+# 1) 本地：提交并推送
+git add -A && git commit -m "..." && git push
 
-- **零构建**：只有一个 `index.html`，双击即可打开，放到任何静态托管上即可上线
-- **深浅色模式**：跟随系统，也可手动切换（右上角按钮，选择会被记住）
-- **滚动浮现动画** + 响应式布局（手机 / 平板 / 桌面）
-- **极简设计**：参考 2026 年优秀作品集网站趋势（大字排版、充足留白、3-5 个精选项目）
+# 2) 服务器：拉取最新（仓库在 /home/code/sky-personal）
+cd /home/code/sky-personal && bash deploy.sh
+```
 
-## ✏️ 如何改成你自己的内容
+- 服务器仓库位置：`/home/code/sky-personal`
+- Caddy 配置：`deploy/Caddyfile`（版本化参考；改动后需手动同步到 `/etc/caddy/Caddyfile` 并 reload，见 `deploy.sh` 提示）
+- 简历 `me/resume.pdf` 含隐私、不入库，单独放在服务器上，`git pull` 不会动它
 
-打开 `index.html`，搜索 `✏️` —— 所有需要替换的地方都标了这个记号：
+## ✏️ 新增一个产品（作品集）
 
-| 位置 | 要改的内容 |
-|---|---|
-| Hero 区 | 名字、一句话介绍 |
-| 关于我 | 个人故事三段 + Quick Facts（坐标/职位/技术栈） |
-| 项目精选 | 4 个项目卡片（标题、描述、技术标签、链接），可增删 |
-| 技能 | 6 张技能卡片 |
-| 经历 | 时间线条目（工作 + 教育） |
-| 简历 | 把你的 `resume.pdf` 放到本目录即可让下载按钮生效 |
-| 联系 | 邮箱、GitHub / 掘金 / 知乎 / LinkedIn 链接 |
+在 `showcase/index.html` 的 `.work-grid` 里复制一张卡片，改内容、把 `href` 换成真实地址即可：
 
-主题色：改 `:root` 里的 `--accent`（默认朱红 `#d4502e`）。
+```html
+<a class="work linked" href="/你的产品路径/">
+  <div class="work-top">
+    <div class="work-icon ic-2">🧰</div>
+    <span class="badge live">在线</span>   <!-- 或 badge dev 开发中 -->
+  </div>
+  <h3>产品名</h3>
+  <p class="desc">一句话描述。</p>
+  <div class="tags"><span class="tag">标签</span></div>
+  <span class="work-cta">立即体验 →</span>
+</a>
+```
 
-## 🚀 部署
-
-任选其一：
-
-- **GitHub Pages**：建仓库 → 推送 → Settings → Pages 选 main 分支
-- **Vercel / Netlify / Cloudflare Pages**：拖拽文件夹即可
-- **飞书妙搭**：在 Claude Code 里说"把这个目录部署到妙搭"即可拿到公网链接
+主题色：改 `:root` 里的 `--accent`（默认朱红 `#d4502e`）。深浅色模式跟随系统，也可右上角手动切换。
 
 ## 🎨 设计参考
 
