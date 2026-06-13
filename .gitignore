@@ -1,0 +1,10 @@
+# 系统 / 编辑器
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# 简历 PDF（含个人隐私，不入库；部署时单独上传）
+resume.pdf
+*.pdf
