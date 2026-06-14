@@ -4,45 +4,42 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sky · 作品集</title>
-<meta name="description" content="Sky 的产品作品集 —— 自研的 AI 应用与实用工具，持续更新。">
+<meta name="description" content="Sky 的产品作品集 —— 自研的 AI 应用与桌面工具，持续更新。">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Crect%20width='100'%20height='100'%20rx='24'%20fill='%23d4502e'/%3E%3Ctext%20x='50'%20y='73'%20font-family='Arial,Helvetica,sans-serif'%20font-size='66'%20font-weight='700'%20fill='%23fff'%20text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@600;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 /* ============ 设计变量 ============ */
 :root {
-  --bg: #faf8f4;
-  --bg-soft: #f1ede5;
-  --ink: #1c1a17;
-  --ink-soft: #57534a;
-  --ink-faint: #8a8478;
+  --bg: #f7f5f0;
+  --bg-soft: #efece4;
+  --ink: #181613;
+  --ink-soft: #5c574d;
+  --ink-faint: #948e81;
   --accent: #d4502e;
-  --accent-soft: rgba(212, 80, 46, .09);
-  --line: rgba(28, 26, 23, .12);
-  --card: #ffffff;
-  --shadow: 0 1px 2px rgba(28,26,23,.04), 0 12px 32px -12px rgba(28,26,23,.12);
-  --shadow-hover: 0 2px 4px rgba(28,26,23,.05), 0 24px 48px -16px rgba(28,26,23,.22);
-  --radius: 18px;
+  --accent-soft: rgba(212, 80, 46, .08);
+  --line: rgba(24, 22, 19, .10);
+  --line-strong: rgba(24, 22, 19, .16);
   --ok: #1ba864;
   --warn: #c98a14;
-  --font-display: "Space Grotesk", "Noto Serif SC", serif;
+  --radius: 16px;
+  --font-display: "Space Grotesk", "Noto Sans SC", sans-serif;
   --font-body: "Noto Sans SC", -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  --ease: cubic-bezier(.22, 1, .36, 1);
 }
 [data-theme="dark"] {
-  --bg: #131210;
-  --bg-soft: #1c1a17;
-  --ink: #f0ece4;
-  --ink-soft: #b5aea2;
-  --ink-faint: #7d776c;
+  --bg: #121110;
+  --bg-soft: #1b1917;
+  --ink: #f2eee6;
+  --ink-soft: #b2aa9e;
+  --ink-faint: #7c766b;
   --accent: #ff7a52;
-  --accent-soft: rgba(255, 122, 82, .12);
-  --line: rgba(240, 236, 228, .14);
-  --card: #1e1c19;
+  --accent-soft: rgba(255, 122, 82, .11);
+  --line: rgba(242, 238, 230, .12);
+  --line-strong: rgba(242, 238, 230, .20);
   --ok: #3ecf7a;
   --warn: #e0b052;
-  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 32px -12px rgba(0,0,0,.5);
-  --shadow-hover: 0 2px 4px rgba(0,0,0,.4), 0 24px 48px -16px rgba(0,0,0,.7);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -51,148 +48,176 @@ body {
   font-family: var(--font-body);
   background: var(--bg);
   color: var(--ink);
-  line-height: 1.75;
-  transition: background .4s ease, color .4s ease;
+  line-height: 1.7;
+  transition: background .5s var(--ease), color .5s var(--ease);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 ::selection { background: var(--accent); color: #fff; }
 a { color: inherit; text-decoration: none; }
-.wrap { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
 
 /* ============ 顶部导航 ============ */
 header {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-  background: color-mix(in srgb, var(--bg) 78%, transparent);
-  border-bottom: 1px solid transparent; transition: border-color .3s ease;
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  background: color-mix(in srgb, var(--bg) 72%, transparent);
+  border-bottom: 1px solid transparent; transition: border-color .4s var(--ease);
 }
 header.scrolled { border-bottom-color: var(--line); }
 nav {
-  max-width: 1100px; margin: 0 auto; padding: 18px 28px;
+  max-width: 1080px; margin: 0 auto; padding: 20px 32px;
   display: flex; align-items: center; justify-content: space-between;
 }
-.logo { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; letter-spacing: -.02em; }
+.logo { font-family: var(--font-display); font-weight: 700; font-size: 1.18rem; letter-spacing: -.02em; }
 .logo em { color: var(--accent); font-style: normal; }
-.nav-right { display: flex; gap: 18px; align-items: center; }
-.nav-right a { color: var(--ink-soft); font-size: .92rem; transition: color .25s; }
+.nav-right { display: flex; gap: 22px; align-items: center; }
+.nav-right a { color: var(--ink-soft); font-size: .9rem; transition: color .25s; }
 .nav-right a:hover { color: var(--ink); }
 .theme-btn {
   width: 38px; height: 38px; border-radius: 50%;
-  border: 1px solid var(--line); background: transparent;
+  border: 1px solid var(--line-strong); background: transparent;
   cursor: pointer; display: grid; place-items: center;
-  color: var(--ink); font-size: 1rem; transition: all .25s;
+  color: var(--ink); font-size: 1rem; transition: all .3s var(--ease);
 }
-.theme-btn:hover { background: var(--bg-soft); transform: rotate(15deg); }
+.theme-btn:hover { background: var(--bg-soft); transform: rotate(-18deg); }
 
 /* ============ Hero ============ */
-.hero {
-  position: relative; overflow: hidden;
-  padding: 170px 0 80px;
+.hero { position: relative; padding: 188px 0 96px; }
+.hero-glow {
+  position: absolute; width: 560px; height: 560px; border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-soft) 0%, transparent 68%);
+  top: -120px; right: -160px; pointer-events: none;
+  animation: drift 16s ease-in-out infinite alternate;
 }
-.hero-grid-bg {
-  position: absolute; inset: 0; pointer-events: none;
-  background-image:
-    linear-gradient(var(--line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line) 1px, transparent 1px);
-  background-size: 72px 72px;
-  mask-image: radial-gradient(ellipse 70% 60% at 30% 30%, black 10%, transparent 70%);
-  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 30% 30%, black 10%, transparent 70%);
-  opacity: .5;
-}
-.hero-blob {
-  position: absolute; width: 480px; height: 480px; border-radius: 50%;
-  background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
-  top: -140px; right: -100px; pointer-events: none;
-  animation: drift 14s ease-in-out infinite alternate;
-}
-@keyframes drift { from { transform: translate(0,0) scale(1); } to { transform: translate(-50px,40px) scale(1.15); } }
+@keyframes drift { from { transform: translate(0,0) scale(1); } to { transform: translate(-40px,50px) scale(1.12); } }
 .hero-kicker {
   display: inline-flex; align-items: center; gap: 10px;
-  font-size: .9rem; color: var(--ink-soft); margin-bottom: 22px;
+  font-size: .82rem; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--ink-soft); margin-bottom: 30px;
+  border: 1px solid var(--line); border-radius: 999px; padding: 7px 16px;
 }
 .hero-kicker .dot {
-  width: 8px; height: 8px; border-radius: 50%; background: #3ecf7a;
-  box-shadow: 0 0 0 0 rgba(62,207,122,.5); animation: pulse 2s infinite;
+  width: 7px; height: 7px; border-radius: 50%; background: var(--ok);
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--ok) 50%, transparent); animation: pulse 2.4s infinite;
 }
-@keyframes pulse { 70% { box-shadow: 0 0 0 9px rgba(62,207,122,0); } }
+@keyframes pulse { 70% { box-shadow: 0 0 0 8px transparent; } }
 .hero h1 {
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 6vw, 4.2rem);
-  line-height: 1.12; letter-spacing: -.03em; font-weight: 700; max-width: 14em;
+  font-size: clamp(2.6rem, 7vw, 5.2rem);
+  line-height: 1.04; letter-spacing: -.035em; font-weight: 700; max-width: 12em;
 }
 .hero h1 .accent { color: var(--accent); }
-.hero p.lede { margin-top: 24px; font-size: 1.12rem; color: var(--ink-soft); max-width: 32em; }
-.hero-stats { margin-top: 36px; display: flex; gap: 40px; flex-wrap: wrap; }
-.stat .num { font-family: var(--font-display); font-size: 1.7rem; font-weight: 700; color: var(--accent); }
-.stat .label { font-size: .85rem; color: var(--ink-faint); }
-
-/* ============ 作品区 ============ */
-section.works { padding: 30px 0 110px; }
-.section-head { margin-bottom: 44px; }
-.section-num { font-family: var(--font-display); color: var(--accent); font-size: .95rem; font-weight: 600; letter-spacing: .12em; }
-.section-head h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.4rem); letter-spacing: -.02em; margin-top: 8px; font-weight: 700; }
-.section-head p { color: var(--ink-soft); margin-top: 10px; max-width: 40em; }
-
-.work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px; }
-
-.work {
-  position: relative; display: flex; flex-direction: column;
-  background: var(--card); border: 1px solid var(--line);
-  border-radius: var(--radius); padding: 30px; box-shadow: var(--shadow);
-  transition: transform .3s ease, box-shadow .3s ease, border-color .3s;
-  opacity: 0; transform: translateY(28px);
+.hero h1 .line { display: block; overflow: hidden; }
+.hero h1 .line > span { display: block; animation: rise 1s var(--ease) both; }
+.hero h1 .line:nth-child(2) > span { animation-delay: .08s; }
+@keyframes rise { from { transform: translateY(105%); } to { transform: translateY(0); } }
+.hero p.lede {
+  margin-top: 30px; font-size: 1.14rem; color: var(--ink-soft); max-width: 30em;
+  animation: fade 1s var(--ease) .35s both;
 }
-.work.in { opacity: 1; transform: none; }
-.work.linked:hover {
-  transform: translateY(-6px); box-shadow: var(--shadow-hover);
-  border-color: color-mix(in srgb, var(--accent) 40%, var(--line));
+@keyframes fade { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.hero-stats {
+  margin-top: 48px; display: flex; gap: 56px; flex-wrap: wrap;
+  animation: fade 1s var(--ease) .5s both;
 }
-.work-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; }
-.work-icon {
-  width: 54px; height: 54px; border-radius: 14px;
-  display: grid; place-items: center; font-size: 1.6rem; flex-shrink: 0;
-  color: #fff;
+.stat .num { font-family: var(--font-display); font-size: 2rem; font-weight: 700; letter-spacing: -.02em; }
+.stat .num em { color: var(--accent); font-style: normal; }
+.stat .label { font-size: .82rem; color: var(--ink-faint); margin-top: 2px; }
+
+/* ============ 作品区（编辑式索引列表）============ */
+section.works { padding: 24px 0 120px; }
+.section-head {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 24px; padding-bottom: 26px; margin-bottom: 8px;
+  border-bottom: 1px solid var(--line-strong);
+}
+.section-head .t { font-family: var(--font-display); font-size: clamp(1.5rem, 3.4vw, 2rem); letter-spacing: -.02em; font-weight: 700; }
+.section-head .meta { font-size: .82rem; letter-spacing: .12em; color: var(--ink-faint); text-transform: uppercase; white-space: nowrap; }
+
+.project {
+  position: relative; display: grid;
+  grid-template-columns: 64px 1fr auto; align-items: center; gap: 28px;
+  padding: 34px 12px; border-bottom: 1px solid var(--line);
+  opacity: 0; transform: translateY(26px); transition: transform .7s var(--ease), opacity .7s var(--ease);
+}
+.project.in { opacity: 1; transform: none; }
+.project::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; bottom: 0;
+  background: var(--accent-soft); opacity: 0; transition: opacity .4s var(--ease);
+  border-radius: var(--radius); z-index: -1;
+}
+.project.linked:hover::before { opacity: 1; }
+.proj-num { font-family: var(--font-display); font-size: 1rem; font-weight: 600; color: var(--ink-faint); transition: color .3s; }
+.project.linked:hover .proj-num { color: var(--accent); }
+
+.proj-main { min-width: 0; }
+.proj-headline { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.proj-icon {
+  width: 40px; height: 40px; border-radius: 11px; display: grid; place-items: center;
+  font-size: 1.2rem; flex-shrink: 0; color: #fff;
 }
 .ic-1 { background: linear-gradient(135deg, #d4502e, #f0903c); }
 .ic-2 { background: linear-gradient(135deg, #2e6ed4, #3cc8f0); }
 .ic-3 { background: linear-gradient(135deg, #1ba864, #7ad43c); }
 .ic-4 { background: linear-gradient(135deg, #7a3cd4, #d43cb0); }
+.proj-name {
+  font-family: var(--font-display); font-size: clamp(1.35rem, 2.6vw, 1.7rem);
+  font-weight: 600; letter-spacing: -.015em;
+  background: linear-gradient(var(--ink), var(--ink)) left bottom / 0 1.5px no-repeat;
+  transition: background-size .4s var(--ease);
+}
+.project.linked:hover .proj-name { background-size: 100% 1.5px; }
 .badge {
-  font-size: .72rem; font-weight: 600; padding: 4px 11px; border-radius: 999px;
-  letter-spacing: .03em; white-space: nowrap; align-self: center;
+  font-size: .7rem; font-weight: 600; padding: 3px 10px; border-radius: 999px;
+  letter-spacing: .03em; white-space: nowrap;
 }
-.badge.live { color: var(--ok); background: color-mix(in srgb, var(--ok) 14%, transparent); }
-.badge.dev  { color: var(--warn); background: color-mix(in srgb, var(--warn) 16%, transparent); }
-.work h3 { font-size: 1.3rem; font-weight: 600; letter-spacing: -.01em; margin-top: 20px; }
-.work .desc { color: var(--ink-soft); margin-top: 10px; font-size: .95rem; flex-grow: 1; }
-.tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
-.tag { font-size: .76rem; padding: 4px 12px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-weight: 500; }
-.work-cta {
-  margin-top: 22px; display: inline-flex; align-items: center; gap: 8px;
-  font-size: .92rem; font-weight: 500; color: var(--accent);
-}
-.work.linked:hover .work-cta { gap: 12px; }
-.work-cta.muted { color: var(--ink-faint); }
+.badge.live { color: var(--ok); background: color-mix(in srgb, var(--ok) 13%, transparent); }
+.badge.dev  { color: var(--warn); background: color-mix(in srgb, var(--warn) 15%, transparent); }
+.proj-desc { color: var(--ink-soft); margin-top: 10px; font-size: .96rem; max-width: 46em; }
+.tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+.tag { font-size: .75rem; padding: 3px 11px; border-radius: 999px; border: 1px solid var(--line-strong); color: var(--ink-faint); }
 
-/* 占位「敬请期待」卡片 */
-.work.placeholder {
-  border-style: dashed; box-shadow: none; background: transparent;
-  align-items: center; justify-content: center; text-align: center;
-  color: var(--ink-faint); min-height: 220px;
+.proj-arrow {
+  width: 48px; height: 48px; border-radius: 50%; flex-shrink: 0;
+  border: 1px solid var(--line-strong); display: grid; place-items: center;
+  font-size: 1.15rem; color: var(--ink-soft);
+  transition: all .35s var(--ease);
 }
-.work.placeholder .big { font-size: 2rem; margin-bottom: 8px; }
+.project.linked:hover .proj-arrow {
+  background: var(--accent); border-color: var(--accent); color: #fff;
+  transform: rotate(-45deg);
+}
+.proj-arrow.muted { opacity: .45; }
+
+/* 占位 */
+.coming {
+  margin-top: 26px; display: flex; align-items: center; gap: 14px;
+  padding: 24px 12px; color: var(--ink-faint); font-size: .92rem;
+}
+.coming .pulse { width: 9px; height: 9px; border-radius: 50%; background: var(--ink-faint); opacity: .6; }
 
 /* ============ 页脚 ============ */
-footer { padding: 40px 0; text-align: center; color: var(--ink-faint); font-size: .85rem; border-top: 1px solid var(--line); }
+footer {
+  padding: 48px 0; display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap; color: var(--ink-faint); font-size: .85rem;
+  border-top: 1px solid var(--line);
+}
+footer a:hover { color: var(--ink); }
 
 /* ============ 响应式 ============ */
-@media (max-width: 760px) {
-  .work-grid { grid-template-columns: 1fr; }
-  .hero { padding-top: 140px; }
+@media (max-width: 720px) {
+  .hero { padding-top: 150px; }
+  .project { grid-template-columns: 1fr auto; gap: 18px; padding: 28px 4px; }
+  .proj-num { display: none; }
+  .proj-arrow { width: 42px; height: 42px; }
+  .hero-stats { gap: 36px; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   html { scroll-behavior: auto; }
+  .project { opacity: 1; transform: none; }
+  .hero h1 .line > span { transform: none; }
 }
 </style>
 </head>
@@ -210,21 +235,20 @@ footer { padding: 40px 0; text-align: center; color: var(--ink-faint); font-size
 
 <!-- ============ Hero ============ -->
 <section class="hero" id="top">
-  <div class="hero-grid-bg"></div>
-  <div class="hero-blob"></div>
+  <div class="hero-glow"></div>
   <div class="wrap">
-    <div class="hero-kicker">
-      <span class="dot"></span> 持续更新中 · Always shipping
-    </div>
-    <h1>我做的一些<span class="accent">产品</span>，<br>都放在这里。</h1>
+    <div class="hero-kicker"><span class="dot"></span> 持续更新中 · Always shipping</div>
+    <h1>
+      <span class="line"><span>我做的<span class="accent">产品</span>，</span></span>
+      <span class="line"><span>都放在这里。</span></span>
+    </h1>
     <p class="lede">
-      这里收录我自研、并公开给大家使用的产品与工具 —— 多数围绕 AI 与效率展开。
-      点开任意一个即可体验，新作品会陆续上线。
+      这里收录我自研、并公开给大家使用的产品与工具 —— 多数围绕 AI 与效率展开。点开任意一个即可体验。
     </p>
     <div class="hero-stats">
-      <div class="stat"><div class="num">2+</div><div class="label">已上线 / 开发中</div></div>
+      <div class="stat"><div class="num"><em>2</em></div><div class="label">已上线</div></div>
+      <div class="stat"><div class="num"><em>2</em></div><div class="label">开发中</div></div>
       <div class="stat"><div class="num">AI</div><div class="label">核心方向</div></div>
-      <div class="stat"><div class="num">∞</div><div class="label">持续更新</div></div>
     </div>
   </div>
 </section>
@@ -233,73 +257,91 @@ footer { padding: 40px 0; text-align: center; color: var(--ink-faint); font-size
 <section class="works" id="works">
   <div class="wrap">
     <div class="section-head">
-      <div class="section-num">作品集 / WORKS</div>
-      <h2>产品一览</h2>
-      <p>每个卡片是一个独立产品。绿色「在线」可直接访问，黄色「开发中」即将上线。</p>
+      <div class="t">产品一览</div>
+      <div class="meta">Selected Works</div>
     </div>
 
-    <div class="work-grid">
+    <!-- ▼▼▼ 新增产品：复制一个 <a class="project linked"> 块，改内容、把 href 换成真实地址即可 ▼▼▼ -->
 
-      <!-- ▼▼▼ 产品卡片：复制一个 <a class="work ..."> 块即可新增产品 ▼▼▼ -->
-
-      <!-- 知识库 -->
-      <a class="work linked" href="#" target="_blank" rel="noopener">
-        <div class="work-top">
-          <div class="work-icon ic-1">📚</div>
-          <span class="badge dev">开发中</span>
-        </div>
-        <h3>AI 知识库</h3>
-        <p class="desc">上传文档即可对话问答的智能知识库。基于 RAG 全链路（解析 → 切片 → 向量化 → 混合检索 → 重排序），让资料「问得到、答得准」。</p>
-        <div class="tags">
-          <span class="tag">RAG</span><span class="tag">向量检索</span><span class="tag">大模型问答</span>
-        </div>
-        <span class="work-cta">即将上线 →</span>
-      </a>
-
-      <!-- Sky 工具箱 -->
-      <a class="work linked" href="/sky-tool/">
-        <div class="work-top">
-          <div class="work-icon ic-2">🧰</div>
+    <!-- 01 · Sky Markdown -->
+    <a class="project linked" href="/sky-md/">
+      <div class="proj-num">01</div>
+      <div class="proj-main">
+        <div class="proj-headline">
+          <div class="proj-icon ic-1">✍️</div>
+          <span class="proj-name">Sky Markdown</span>
           <span class="badge live">在线</span>
         </div>
-        <h3>Sky 工具箱</h3>
-        <p class="desc">集全盘文件秒搜、截图贴图标注、桌面待办提醒于一体的 Windows 桌面效率工具，免安装运行时，双击即用。</p>
+        <p class="proj-desc">开源免费的 Typora 风格 Markdown 编辑器，所见即所得、实时渲染，支持多标签页、主题切换与一键导出。基于 Electron + Milkdown 打造。</p>
+        <div class="tags">
+          <span class="tag">Markdown</span><span class="tag">所见即所得</span><span class="tag">开源免费</span><span class="tag">Electron</span>
+        </div>
+      </div>
+      <div class="proj-arrow">↗</div>
+    </a>
+
+    <!-- 02 · Sky 工具箱 -->
+    <a class="project linked" href="/sky-tool/">
+      <div class="proj-num">02</div>
+      <div class="proj-main">
+        <div class="proj-headline">
+          <div class="proj-icon ic-2">🧰</div>
+          <span class="proj-name">Sky 工具箱</span>
+          <span class="badge live">在线</span>
+        </div>
+        <p class="proj-desc">集全盘文件秒搜、截图贴图标注、桌面待办提醒于一体的 Windows 桌面效率工具，免安装运行时，双击即用。</p>
         <div class="tags">
           <span class="tag">Windows 桌面</span><span class="tag">效率工具</span><span class="tag">免安装</span>
         </div>
-        <span class="work-cta">立即体验 →</span>
-      </a>
+      </div>
+      <div class="proj-arrow">↗</div>
+    </a>
 
-      <!-- 看盘神器（demo 示例） -->
-      <a class="work linked" href="#" target="_blank" rel="noopener">
-        <div class="work-top">
-          <div class="work-icon ic-3">📈</div>
+    <!-- 03 · AI 知识库 -->
+    <a class="project linked" href="#" aria-disabled="true">
+      <div class="proj-num">03</div>
+      <div class="proj-main">
+        <div class="proj-headline">
+          <div class="proj-icon ic-3">📚</div>
+          <span class="proj-name">AI 知识库</span>
           <span class="badge dev">开发中</span>
         </div>
-        <h3>看盘神器</h3>
-        <p class="desc">股票 / 虚拟货币实时看盘工具，聚合行情数据与关键指标，支持自定义关注列表与提醒，帮你一眼看清市场。</p>
+        <p class="proj-desc">上传文档即可对话问答的智能知识库。基于 RAG 全链路（解析 → 切片 → 向量化 → 混合检索 → 重排序），让资料「问得到、答得准」。</p>
+        <div class="tags">
+          <span class="tag">RAG</span><span class="tag">向量检索</span><span class="tag">大模型问答</span>
+        </div>
+      </div>
+      <div class="proj-arrow muted">→</div>
+    </a>
+
+    <!-- 04 · 看盘神器 -->
+    <a class="project linked" href="#" aria-disabled="true">
+      <div class="proj-num">04</div>
+      <div class="proj-main">
+        <div class="proj-headline">
+          <div class="proj-icon ic-4">📈</div>
+          <span class="proj-name">看盘神器</span>
+          <span class="badge dev">开发中</span>
+        </div>
+        <p class="proj-desc">股票 / 虚拟货币实时看盘工具，聚合行情数据与关键指标，支持自定义关注列表与提醒，帮你一眼看清市场。</p>
         <div class="tags">
           <span class="tag">实时行情</span><span class="tag">数据可视化</span><span class="tag">提醒</span>
         </div>
-        <span class="work-cta">即将上线 →</span>
-      </a>
-
-      <!-- 占位：更多产品 -->
-      <div class="work placeholder">
-        <div>
-          <div class="big">✨</div>
-          更多产品正在路上<br>陆续上线，敬请期待
-        </div>
       </div>
+      <div class="proj-arrow muted">→</div>
+    </a>
 
-      <!-- ▲▲▲ 新增产品时，把上面任意一个卡片复制一份、改内容、把 href 换成真实地址即可 ▲▲▲ -->
+    <!-- ▲▲▲ 新增产品到此为止 ▲▲▲ -->
 
-    </div>
+    <div class="coming"><span class="pulse"></span> 更多产品正在路上，陆续上线。</div>
   </div>
 </section>
 
 <footer>
-  <div class="wrap">© 2026 Sky · 作品集 · 持续更新中</div>
+  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;width:100%;">
+    <span>© 2026 Sky · 作品集</span>
+    <span>持续更新中 · Always shipping</span>
+  </div>
 </footer>
 
 <script>
@@ -319,19 +361,24 @@ themeBtn.addEventListener('click', () => {
   localStorage.setItem('theme', next);
 });
 
-// 导航栏滚动阴影
+// 导航栏滚动描边
 const header = document.getElementById('header');
 window.addEventListener('scroll', () => {
   header.classList.toggle('scrolled', window.scrollY > 10);
 }, { passive: true });
 
-// 卡片浮现动画
+// 项目逐行浮现
 const io = new IntersectionObserver(entries => {
-  entries.forEach((e, i) => {
+  entries.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
   });
-}, { threshold: 0.12 });
-document.querySelectorAll('.work').forEach(el => io.observe(el));
+}, { threshold: 0.15 });
+document.querySelectorAll('.project').forEach(el => io.observe(el));
+
+// 开发中卡片：阻止跳转
+document.querySelectorAll('a[aria-disabled="true"]').forEach(a => {
+  a.addEventListener('click', e => e.preventDefault());
+});
 </script>
 </body>
 </html>
