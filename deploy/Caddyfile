@@ -3,10 +3,12 @@
 # 同步到生效位置：
 #   cp deploy/Caddyfile /etc/caddy/Caddyfile && caddy validate --config /etc/caddy/Caddyfile && systemctl reload caddy
 
-# 80 端口（IP 直连）：根=作品集，/me=个人主页，/sky-tool=Sky 工具箱
+# 80 端口（IP 直连）：根=作品集，/me=个人主页，/sky-tool=Sky 工具箱，/sky-md=Sky Markdown 介绍页，/sky-sql=SkySQL 介绍页
 :80 {
 	redir /me /me/ permanent
 	redir /sky-tool /sky-tool/ permanent
+	redir /sky-md /sky-md/ permanent
+	redir /sky-sql /sky-sql/ permanent
 	handle_path /me/* {
 		root * /home/code/sky-personal/me
 		file_server
@@ -15,16 +17,26 @@
 		root * /home/code/sky-tool
 		file_server
 	}
+	handle_path /sky-md/* {
+		root * /home/code/sky-md
+		file_server
+	}
+	handle_path /sky-sql/* {
+		root * /home/code/sky-sql
+		file_server
+	}
 	handle {
 		root * /home/code/sky-personal/showcase
 		file_server
 	}
 }
 
-# 域名（备案通过后自动 HTTPS）：根=作品集，/me=个人主页，/voc=SKG VOC 看板，/sky-tool=Sky 工具箱
+# 域名（备案通过后自动 HTTPS）：根=作品集，/me=个人主页，/voc=SKG VOC 看板，/sky-tool=Sky 工具箱，/sky-md=Sky Markdown 介绍页，/sky-sql=SkySQL 介绍页
 skyyjj.cn {
 	redir /me /me/ permanent
 	redir /sky-tool /sky-tool/ permanent
+	redir /sky-md /sky-md/ permanent
+	redir /sky-sql /sky-sql/ permanent
 	handle_path /me/* {
 		root * /home/code/sky-personal/me
 		file_server
@@ -34,6 +46,14 @@ skyyjj.cn {
 	}
 	handle_path /sky-tool/* {
 		root * /home/code/sky-tool
+		file_server
+	}
+	handle_path /sky-md/* {
+		root * /home/code/sky-md
+		file_server
+	}
+	handle_path /sky-sql/* {
+		root * /home/code/sky-sql
 		file_server
 	}
 	handle {
