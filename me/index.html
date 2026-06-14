@@ -265,6 +265,11 @@ section { padding: 110px 0; }
 }
 .skill-card h3 { font-size: 1.08rem; font-weight: 600; margin-bottom: 10px; }
 .skill-card p { color: var(--ink-soft); font-size: .92rem; }
+.skill-card .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 15px; }
+.skill-card .tags span {
+  font-size: .72rem; padding: 3px 11px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent); font-weight: 500; white-space: nowrap;
+}
 
 /* ============ 经历 / 简历 ============ */
 .timeline { position: relative; padding-left: 36px; }
@@ -502,32 +507,38 @@ footer {
       <div class="skill-card reveal">
         <div class="icon">🧩</div>
         <h3>Agent 系统开发</h3>
-        <p>熟悉大模型 Agent 全流程开发，用 LangChain 构建 LLM 驱动的智能问答与 AI 助手；熟练 Dify、Coze 低代码平台搭建企业级智能体并对接生产环境。</p>
+        <p>主导大模型 Agent 全链路研发，基于 LangChain / LangGraph 实现 ReAct 推理、Function Calling 与 MCP 工具调用，构建可自主规划、多智能体协作的复杂任务系统；以 Dify、Coze 编排生产级工作流，稳定支撑企业高并发调用。</p>
+        <div class="tags"><span>多智能体协作</span><span>LangGraph</span><span>Function Calling</span><span>MCP</span><span>Dify · Coze</span></div>
       </div>
       <div class="skill-card reveal">
         <div class="icon">📚</div>
         <h3>RAG 工程化</h3>
-        <p>深入落地 RAG 方案，完成文档解析、切片、向量化、混合检索、重排序全链路开发，有效降低大模型幻觉。</p>
+        <p>深耕生产级 RAG 与 Agentic RAG，打通文档解析 → 智能切片 → 向量化 → 混合检索（BM25 + 稠密向量）→ Rerank 重排序全链路；结合查询改写与多路召回把幻觉压到最低，让知识问答「答得准、引得到」。</p>
+        <div class="tags"><span>Agentic RAG</span><span>混合检索</span><span>Rerank 重排序</span><span>向量数据库</span><span>幻觉抑制</span></div>
       </div>
       <div class="skill-card reveal">
         <div class="icon">⚙️</div>
         <h3>Web 全栈开发</h3>
-        <p>熟练 Java 后端（Spring Boot / Cloud、MyBatis-Plus）与 Python（FastAPI / Flask）；熟悉 Vue 全家桶 + Element-UI 中后台开发，多个生产项目实战。</p>
+        <p>Java + Python 双栈实战派，精通 Spring Boot / Cloud 微服务、MyBatis-Plus 与 FastAPI / Flask 高性能接口；前端 Vue3 全家桶 + Element-Plus 中后台独立交付，多个高可用生产项目从 0 到 1 落地。</p>
+        <div class="tags"><span>Spring Cloud</span><span>FastAPI</span><span>Vue3</span><span>微服务</span><span>高并发</span></div>
       </div>
       <div class="skill-card reveal">
         <div class="icon">🗄️</div>
         <h3>数据与存储</h3>
-        <p>熟练 MySQL，掌握索引优化、事务与 SQL 调优；熟悉 Redis 场景落地；熟悉数据仓库与分析，掌握 Kettle、DataEase、SPSS 等工具。</p>
+        <p>精通 MySQL 索引优化、事务隔离与慢 SQL 调优，千万级数据下查询依旧丝滑；熟练 Redis 缓存 / 分布式锁多场景落地；玩转向量数据库（Chroma / Milvus），打通数据仓库与 BI 分析全链路。</p>
+        <div class="tags"><span>SQL 调优</span><span>Redis</span><span>向量数据库</span><span>数据仓库</span><span>DataEase</span></div>
       </div>
       <div class="skill-card reveal">
         <div class="icon">🔬</div>
         <h3>模型微调与私有化部署</h3>
-        <p>熟悉 LoRA / QLoRA 高效微调，用 LLaMA-Factory、XTuner 完成数据集构建到权重合并全流程；用 vLLM、LMDeploy、Ollama 实现推理加速与私有化部署。</p>
+        <p>掌握 LoRA / QLoRA 参数高效微调，基于 LLaMA-Factory、XTuner 跑通数据集构建 → SFT 训练 → 权重合并全流程；以 vLLM、LMDeploy、Ollama 实现推理加速与私有化部署，为企业打造数据不出域的专属大模型。</p>
+        <div class="tags"><span>LoRA / QLoRA</span><span>LLaMA-Factory</span><span>SFT 微调</span><span>vLLM</span><span>私有化部署</span></div>
       </div>
       <div class="skill-card reveal">
         <div class="icon">☁️</div>
         <h3>工程化与运维</h3>
-        <p>掌握 Linux 常用操作、Docker 容器化、Nginx 配置与前后端 / 服务端项目自动化部署；熟练使用 Claude Code、Cursor 等 AI 编程工具。</p>
+        <p>云原生工程化能手，熟练 Linux、Docker 容器化与 Nginx / Caddy 反向代理，搭建 CI/CD 自动化部署流水线保障服务稳定上线；深度用好 Claude Code、Cursor 等 AI 编程工具，研发效率成倍提升。</p>
+        <div class="tags"><span>Docker</span><span>CI/CD</span><span>Nginx · Caddy</span><span>云原生</span><span>AI 编程</span></div>
       </div>
     </div>
   </div>
