@@ -198,6 +198,46 @@ section.works { padding: 24px 0 120px; }
 }
 .coming .pulse { width: 9px; height: 9px; border-radius: 50%; background: var(--ink-faint); opacity: .6; }
 
+/* ============ 关于我 ============ */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.reveal.in { opacity: 1; transform: none; }
+section.about { padding: 24px 0 116px; }
+.about-intro {
+  margin: 34px 0 8px; display: grid; grid-template-columns: 1.45fr 1fr; gap: 48px; align-items: start;
+}
+.about-lede .name { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; letter-spacing: -.02em; margin-bottom: 18px; }
+.about-lede .name em { color: var(--accent); font-style: normal; }
+.about-lede p { color: var(--ink-soft); font-size: 1.02rem; margin-bottom: 15px; max-width: 36em; }
+.about-lede strong { color: var(--ink); font-weight: 600; }
+.about-facts { border: 1px solid var(--line); border-radius: var(--radius); padding: 8px 24px; background: var(--bg-soft); }
+.about-facts .fact { display: flex; justify-content: space-between; gap: 14px; padding: 13px 0; border-bottom: 1px solid var(--line); font-size: .92rem; }
+.about-facts .fact:last-child { border-bottom: 0; }
+.about-facts .fact span:first-child { color: var(--ink-faint); }
+.about-facts .fact span:last-child { color: var(--ink); font-weight: 500; text-align: right; }
+
+.skill-grid { margin-top: 46px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.skill-card {
+  border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; background: var(--bg);
+  transition: border-color .3s var(--ease), transform .3s var(--ease);
+}
+.skill-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+.skill-card .ico { font-size: 1.5rem; margin-bottom: 12px; }
+.skill-card h3 { font-family: var(--font-display); font-size: 1.04rem; font-weight: 600; margin-bottom: 8px; letter-spacing: -.01em; }
+.skill-card p { color: var(--ink-soft); font-size: .89rem; line-height: 1.66; }
+
+.about-contact {
+  margin-top: 46px; display: flex; align-items: center; justify-content: space-between; gap: 22px; flex-wrap: wrap;
+  padding: 30px; border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--accent-soft);
+}
+.about-contact .ct-text h3 { font-family: var(--font-display); font-size: 1.22rem; font-weight: 700; letter-spacing: -.01em; }
+.about-contact .ct-text p { color: var(--ink-soft); font-size: .92rem; margin-top: 5px; }
+.about-contact .ct-mail {
+  font-family: var(--font-display); font-weight: 600; font-size: 1.02rem; color: var(--accent);
+  border: 1px solid var(--accent); padding: 12px 24px; border-radius: 999px; white-space: nowrap;
+  transition: background .3s var(--ease), color .3s var(--ease);
+}
+.about-contact .ct-mail:hover { background: var(--accent); color: #fff; }
+
 /* ============ 页脚 ============ */
 footer {
   padding: 48px 0; display: flex; align-items: center; justify-content: space-between;
@@ -213,11 +253,14 @@ footer a:hover { color: var(--ink); }
   .proj-num { display: none; }
   .proj-arrow { width: 42px; height: 42px; }
   .hero-stats { gap: 36px; }
+  .about-intro { grid-template-columns: 1fr; gap: 30px; }
+  .skill-grid { grid-template-columns: 1fr; }
+  .about-contact { flex-direction: column; align-items: flex-start; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   html { scroll-behavior: auto; }
-  .project { opacity: 1; transform: none; }
+  .project, .reveal { opacity: 1; transform: none; }
   .hero h1 .line > span { transform: none; }
 }
 </style>
@@ -229,6 +272,7 @@ footer a:hover { color: var(--ink); }
     <a class="logo" href="#top">Sky<em>.</em></a>
     <div class="nav-right">
       <a href="#works">作品</a>
+      <a href="#about">关于我</a>
       <button class="theme-btn" id="themeBtn" aria-label="切换深浅色模式" title="切换深浅色模式">☾</button>
     </div>
   </nav>
@@ -355,6 +399,74 @@ footer a:hover { color: var(--ink); }
   </div>
 </section>
 
+<!-- ============ 关于我 ============ -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="t">关于我</div>
+      <div class="meta">About Me</div>
+    </div>
+
+    <div class="about-intro">
+      <div class="about-lede reveal">
+        <div class="name">姚俊杰 · <em>Sky</em></div>
+        <p>一名 <strong>AI 大模型应用 / 智能体研发工程师</strong>。计算机技术硕士，3 年全栈开发经验，其中近 2 年专注在大模型应用与智能体研发上。</p>
+        <p>从 Java / Python 后端，到 RAG 工程化、Agent 编排、模型微调与私有化部署，我习惯把一个 AI 想法<strong>完整地推到生产环境</strong> —— 关注性能、成本与可维护性，擅长把复杂业务与 AI 技术真正结合落地。</p>
+        <p>做过政务 AI Agent、企业级智能开发平台，也独立主导过 AI 桌面机器人的研发。对 AI 大模型方向有长期热情，也乐于把想法做成上面这些公开的产品。</p>
+      </div>
+      <aside class="about-facts reveal">
+        <div class="fact"><span>📍 坐标</span><span>中国 · 深圳</span></div>
+        <div class="fact"><span>💼 方向</span><span>AI 大模型应用 / 智能体</span></div>
+        <div class="fact"><span>🛠 技术栈</span><span>Java / Python · 全栈</span></div>
+        <div class="fact"><span>🤖 AI 栈</span><span>RAG · Agent · 微调部署</span></div>
+        <div class="fact"><span>🎓 学历</span><span>计算机技术 · 硕士</span></div>
+        <div class="fact"><span>⏳ 经验</span><span>3 年（近 2 年 AI）</span></div>
+      </aside>
+    </div>
+
+    <div class="skill-grid">
+      <div class="skill-card reveal">
+        <div class="ico">🧩</div>
+        <h3>Agent 系统开发</h3>
+        <p>熟悉大模型 Agent 全流程开发，用 LangChain 构建 LLM 驱动的智能问答与 AI 助手；熟练 Dify、Coze 低代码平台搭建企业级智能体并对接生产环境。</p>
+      </div>
+      <div class="skill-card reveal">
+        <div class="ico">📚</div>
+        <h3>RAG 工程化</h3>
+        <p>深入落地 RAG 方案，完成文档解析、切片、向量化、混合检索、重排序全链路开发，有效降低大模型幻觉。</p>
+      </div>
+      <div class="skill-card reveal">
+        <div class="ico">⚙️</div>
+        <h3>Web 全栈开发</h3>
+        <p>熟练 Java 后端（Spring Boot / Cloud、MyBatis-Plus）与 Python（FastAPI / Flask）；熟悉 Vue 全家桶 + Element-UI 中后台开发，多个生产项目实战。</p>
+      </div>
+      <div class="skill-card reveal">
+        <div class="ico">🗄️</div>
+        <h3>数据与存储</h3>
+        <p>熟练 MySQL，掌握索引优化、事务与 SQL 调优；熟悉 Redis 场景落地；熟悉数据仓库与分析，掌握 Kettle、DataEase、SPSS 等工具。</p>
+      </div>
+      <div class="skill-card reveal">
+        <div class="ico">🔬</div>
+        <h3>模型微调与私有化部署</h3>
+        <p>熟悉 LoRA / QLoRA 高效微调，用 LLaMA-Factory、XTuner 完成数据集构建到权重合并全流程；用 vLLM、LMDeploy、Ollama 实现推理加速与私有化部署。</p>
+      </div>
+      <div class="skill-card reveal">
+        <div class="ico">☁️</div>
+        <h3>工程化与运维</h3>
+        <p>掌握 Linux 常用操作、Docker 容器化、Nginx 配置与前后端 / 服务端项目自动化部署；熟练使用 Claude Code、Cursor 等 AI 编程工具。</p>
+      </div>
+    </div>
+
+    <div class="about-contact reveal">
+      <div class="ct-text">
+        <h3>来聊聊吧 👋</h3>
+        <p>AI 大模型相关的工作机会、项目合作或技术交流，都欢迎邮件联系我。</p>
+      </div>
+      <a class="ct-mail" href="mailto:2423047628@qq.com">2423047628@qq.com</a>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;width:100%;">
     <span>© 2026 Sky · 作品集</span>
@@ -391,7 +503,7 @@ const io = new IntersectionObserver(entries => {
     if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
   });
 }, { threshold: 0.15 });
-document.querySelectorAll('.project').forEach(el => io.observe(el));
+document.querySelectorAll('.project, .reveal').forEach(el => io.observe(el));
 
 // 开发中卡片：阻止跳转
 document.querySelectorAll('a[aria-disabled="true"]').forEach(a => {
