@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>从 0 到 1 理解 AI Agent · 互动教程</title>
+  <meta name="description" content="不讲玄学，不堆术语。从一个 20 行的循环开始，一步步看懂一个真正的 AI Agent 是怎么造出来的。">
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+</head>
+<body>
+  <button class="menu-toggle" id="menuToggle">☰</button>
+  <div class="overlay" id="overlay"></div>
+
+  <div class="layout">
+    <!-- 侧边栏 -->
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <h1>🤖 Agent 入门</h1>
+        <p>从 0 到 1 理解 AI Agent</p>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+        <div class="progress-label" id="progressLabel">已学习 0 / 0 课</div>
+      </div>
+      <nav id="nav"></nav>
+    </aside>
+
+    <!-- 正文 -->
+    <main class="main">
+      <div class="content" id="content"></div>
+    </main>
+  </div>
+
+  <script src="assets/lessons.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

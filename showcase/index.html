@@ -135,6 +135,14 @@ section.works { padding: 24px 0 120px; }
 .section-head .t { font-family: var(--font-display); font-size: clamp(1.5rem, 3.4vw, 2rem); letter-spacing: -.02em; font-weight: 700; }
 .section-head .meta { font-size: .82rem; letter-spacing: .12em; color: var(--ink-faint); text-transform: uppercase; white-space: nowrap; }
 
+/* 分类标题 */
+.cat-row { display: flex; align-items: baseline; gap: 13px; margin: 50px 0 4px; }
+.cat-row:first-of-type { margin-top: 22px; }
+.cat-row .cat-ic { font-size: 1.15rem; }
+.cat-row .cat-name { font-family: var(--font-display); font-size: 1.16rem; font-weight: 700; letter-spacing: -.01em; }
+.cat-row .cat-count { font-size: .78rem; color: var(--ink-faint); border: 1px solid var(--line); border-radius: 999px; padding: 1px 9px; }
+.cat-row .cat-meta { margin-left: auto; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint); white-space: nowrap; }
+
 .project {
   position: relative; display: grid;
   grid-template-columns: 64px 1fr auto; align-items: center; gap: 28px;
@@ -291,8 +299,8 @@ footer a:hover { color: var(--ink); }
       这里收录我自研、并公开给大家使用的产品与工具 —— 多数围绕 AI 与效率展开。点开任意一个即可体验。
     </p>
     <div class="hero-stats">
-      <div class="stat"><div class="num"><em>3</em></div><div class="label">已上线</div></div>
-      <div class="stat"><div class="num"><em>2</em></div><div class="label">开发中</div></div>
+      <div class="stat"><div class="num"><em>4</em></div><div class="label">已上线</div></div>
+      <div class="stat"><div class="num"><em>2</em></div><div class="label">作品分类</div></div>
       <div class="stat"><div class="num">AI</div><div class="label">核心方向</div></div>
     </div>
   </div>
@@ -306,9 +314,20 @@ footer a:hover { color: var(--ink); }
       <div class="meta">Selected Works</div>
     </div>
 
-    <!-- ▼▼▼ 新增产品：复制一个 <a class="project linked"> 块，改内容、把 href 换成真实地址即可 ▼▼▼ -->
+    <!-- ============================================================
+         作品按类别分组。新增作品：在对应分类下复制一个
+         <a class="project linked"> 块，改内容、把 href 换成真实地址即可。
+         ============================================================ -->
 
-    <!-- 01 · Sky Markdown -->
+    <!-- ▼▼▼ 工具类 ▼▼▼ -->
+    <div class="cat-row">
+      <span class="cat-ic">🧰</span>
+      <span class="cat-name">工具类</span>
+      <span class="cat-count">3</span>
+      <span class="cat-meta">Tools</span>
+    </div>
+
+    <!-- 工具 01 · Sky Markdown -->
     <a class="project linked" href="/sky-md/">
       <div class="proj-num">01</div>
       <div class="proj-main">
@@ -325,7 +344,7 @@ footer a:hover { color: var(--ink); }
       <div class="proj-arrow">↗</div>
     </a>
 
-    <!-- 02 · Sky 工具箱 -->
+    <!-- 工具 02 · Sky 工具箱 -->
     <a class="project linked" href="/sky-tool/">
       <div class="proj-num">02</div>
       <div class="proj-main">
@@ -342,7 +361,7 @@ footer a:hover { color: var(--ink); }
       <div class="proj-arrow">↗</div>
     </a>
 
-    <!-- 03 · SkySQL -->
+    <!-- 工具 03 · SkySQL -->
     <a class="project linked" href="/sky-sql/">
       <div class="proj-num">03</div>
       <div class="proj-main">
@@ -359,7 +378,33 @@ footer a:hover { color: var(--ink); }
       <div class="proj-arrow">↗</div>
     </a>
 
-    <!-- 04 · AI 知识库 -->
+    <!-- ▼▼▼ 教程类 ▼▼▼ -->
+    <div class="cat-row">
+      <span class="cat-ic">📚</span>
+      <span class="cat-name">教程类</span>
+      <span class="cat-count">1</span>
+      <span class="cat-meta">Tutorials</span>
+    </div>
+
+    <!-- 教程 01 · 从 0 到 1 理解 AI Agent -->
+    <a class="project linked" href="/learn-agent/">
+      <div class="proj-num">01</div>
+      <div class="proj-main">
+        <div class="proj-headline">
+          <div class="proj-icon ic-4">🤖</div>
+          <span class="proj-name">从 0 到 1 理解 AI Agent</span>
+          <span class="badge live">在线</span>
+        </div>
+        <p class="proj-desc">面向初学者的 AI Agent 入门互动教程：从一个 20 行的循环出发，一步步拆解工具、权限、记忆、错误恢复、多 Agent 协作…… 完整 20 课，配生活类比、可运行代码与可点击的「循环模拟器」。零依赖、可离线打开。</p>
+        <div class="tags">
+          <span class="tag">AI Agent</span><span class="tag">互动教程</span><span class="tag">从 0 到 1</span><span class="tag">20 课</span>
+        </div>
+      </div>
+      <div class="proj-arrow">↗</div>
+    </a>
+
+    <!-- ▼▼▼ 开发中（暂时隐藏，上线后取消注释即可恢复）▼▼▼
+
     <a class="project linked" href="#" aria-disabled="true">
       <div class="proj-num">04</div>
       <div class="proj-main">
@@ -376,7 +421,6 @@ footer a:hover { color: var(--ink); }
       <div class="proj-arrow muted">→</div>
     </a>
 
-    <!-- 05 · 看盘神器 -->
     <a class="project linked" href="#" aria-disabled="true">
       <div class="proj-num">05</div>
       <div class="proj-main">
@@ -393,7 +437,7 @@ footer a:hover { color: var(--ink); }
       <div class="proj-arrow muted">→</div>
     </a>
 
-    <!-- ▲▲▲ 新增产品到此为止 ▲▲▲ -->
+    ▲▲▲ 开发中到此为止 ▲▲▲ -->
 
     <div class="coming"><span class="pulse"></span> 更多产品正在路上，陆续上线。</div>
   </div>
