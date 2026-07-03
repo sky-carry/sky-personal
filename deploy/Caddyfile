@@ -4,11 +4,20 @@
 #   cp deploy/Caddyfile /etc/caddy/Caddyfile && caddy validate --config /etc/caddy/Caddyfile && systemctl reload caddy
 
 # 80 端口（IP 直连）：根=作品集，/me=个人主页，/sky-tool=Sky 工具箱，/sky-md=Sky Markdown 介绍页，/sky-sql=SkySQL 介绍页
+# /fortune=AURELO（Next.js 容器 3502），/fortune-cn=天时历（Next.js 容器 3501）——两应用带 basePath，用 handle 不剥前缀
 :80 {
 	redir /me /me/ permanent
 	redir /sky-tool /sky-tool/ permanent
 	redir /sky-md /sky-md/ permanent
 	redir /sky-sql /sky-sql/ permanent
+	redir /fortune /fortune/ permanent
+	redir /fortune-cn /fortune-cn/ permanent
+	handle /fortune/* {
+		reverse_proxy localhost:3502
+	}
+	handle /fortune-cn/* {
+		reverse_proxy localhost:3501
+	}
 	handle_path /me/* {
 		root * /home/code/sky-personal/me
 		file_server
@@ -37,6 +46,14 @@ skyyjj.cn {
 	redir /sky-tool /sky-tool/ permanent
 	redir /sky-md /sky-md/ permanent
 	redir /sky-sql /sky-sql/ permanent
+	redir /fortune /fortune/ permanent
+	redir /fortune-cn /fortune-cn/ permanent
+	handle /fortune/* {
+		reverse_proxy localhost:3502
+	}
+	handle /fortune-cn/* {
+		reverse_proxy localhost:3501
+	}
 	handle_path /me/* {
 		root * /home/code/sky-personal/me
 		file_server
