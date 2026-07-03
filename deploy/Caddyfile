@@ -10,12 +10,13 @@
 	redir /sky-tool /sky-tool/ permanent
 	redir /sky-md /sky-md/ permanent
 	redir /sky-sql /sky-sql/ permanent
-	redir /fortune /fortune/ permanent
-	redir /fortune-cn /fortune-cn/ permanent
-	handle /fortune/* {
+	# Next.js basePath 应用自己处理尾斜杠（/fortune/ 会 308 回 /fortune），这里不能再加 redir，否则成环
+	@fortune path /fortune /fortune/*
+	handle @fortune {
 		reverse_proxy localhost:3502
 	}
-	handle /fortune-cn/* {
+	@fortunecn path /fortune-cn /fortune-cn/*
+	handle @fortunecn {
 		reverse_proxy localhost:3501
 	}
 	handle_path /me/* {
@@ -46,12 +47,12 @@ skyyjj.cn {
 	redir /sky-tool /sky-tool/ permanent
 	redir /sky-md /sky-md/ permanent
 	redir /sky-sql /sky-sql/ permanent
-	redir /fortune /fortune/ permanent
-	redir /fortune-cn /fortune-cn/ permanent
-	handle /fortune/* {
+	@fortune path /fortune /fortune/*
+	handle @fortune {
 		reverse_proxy localhost:3502
 	}
-	handle /fortune-cn/* {
+	@fortunecn path /fortune-cn /fortune-cn/*
+	handle @fortunecn {
 		reverse_proxy localhost:3501
 	}
 	handle_path /me/* {
