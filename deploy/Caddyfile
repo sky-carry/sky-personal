@@ -41,6 +41,11 @@
 	}
 }
 
+# www 子域名：301 重定向到主域名（备案要求 www 也可访问，Caddy 自动为其签发证书）
+www.skyyjj.cn {
+	redir https://skyyjj.cn{uri} permanent
+}
+
 # 域名（备案通过后自动 HTTPS）：根=作品集，/me=个人主页，/voc=SKG VOC 看板，/sky-tool=Sky 工具箱，/sky-md=Sky Markdown 介绍页，/sky-sql=SkySQL 介绍页
 skyyjj.cn {
 	redir /me /me/ permanent
